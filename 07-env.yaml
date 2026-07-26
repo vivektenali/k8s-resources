@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-demo
+  labels:
+    project: my-app
+    environment: prod
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+  env:
+    - name: USERNAME
+      value: "VIVEK_TENALI"
