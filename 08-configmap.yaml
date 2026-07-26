@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  PLAYER_INITIAL_LIVES: "3"
+  UI_THEME: "dark"
