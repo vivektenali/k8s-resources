@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend-replicaset
+spec:
+  # 1. The Desired State
+  replicas: 3 
+  
+  # 2. The Selector (How it finds the pods)
+  selector:
+    matchLabels:
+      tier: frontend
+      
+  # 3. The Pod Template (The blueprint)
+  template:
+    metadata:
+      labels:
+        tier: frontend  # This MUST match the selector above
+    spec:
+      containers:
+      - name: nginx-web
+        image: nginx:latest
