@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-java-app
+spec:
+  containers:
+  - name: java-app-container
+    image: my-company/java-app:1.0
+    # Wait for the application to finish starting
+    startupProbe:
+      httpGet:
+        path: /health
+        port: 8080
+      periodSeconds: 6
+      failureThreshold: 30
+    # Send traffic only when the app is ready
+    readinessProbe:
+      httpGet:
+        path: /health
+        port: 8080
+      periodSeconds: 10
+      failureThreshold: 3
